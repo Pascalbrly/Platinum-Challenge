@@ -1,21 +1,44 @@
-tags:
-  - name: Text Processing File
-get:
-  description: Teks yang akan diproses
-consumes:
-  - multipart/form-data
-parameters:
-  - name: file
-    in: formData
-    description: File to upload
-    required: true
-    type: file
-responses:
-    '200':
-      description: Successful response
-    '400':
-      description: Bad Request
-    '500':
-      description: Internal Server Error
-
-      
+---
+swagger: '2.0'
+info:
+  description: "Text Processing File"
+  version: "1.0.0"
+  title: "Text Processing File API"
+paths:
+  /text-processing-file:
+    post:
+      tags:
+        - "Text Processing"
+      summary: "Process text from a file"
+      description: "Endpoint to process text from an uploaded file"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "file"
+          in: "formData"
+          description: "CSV file containing text data to process"
+          required: true
+          type: "file"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              status_code:
+                type: "integer"
+              description:
+                type: "string"
+              data:
+                type: "array"
+                items:
+                  type: "string"
+        500:
+          description: "Server error"
+          schema:
+            type: "object"
+            properties:
+              error:
+                type: "string"

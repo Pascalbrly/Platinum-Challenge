@@ -1,0 +1,42 @@
+/lstm_model:
+    post:
+      tags:
+        - Train Models
+      summary: Train an LSTM model
+      description: Train an LSTM model using either text data or a CSV file.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                texts:
+                  type: array
+                  items:
+                    type: string
+                  description: List of texts for training the model
+                labels:
+                  type: array
+                  items:
+                    type: integer
+                  description: List of labels corresponding to the texts
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: CSV file containing texts and labels for training the model
+      responses:
+        '200':
+          description: LSTM Model trained successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "LSTM Model trained successfully"

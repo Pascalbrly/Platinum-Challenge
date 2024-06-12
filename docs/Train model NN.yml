@@ -1,0 +1,51 @@
+info:
+  title: NN and LSTM Model API
+  version: 1.0.0
+tags:
+  - name: Train Models
+    description: Endpoints for training Neural Network and LSTM models
+  - name: Predict NN
+    description: Endpoint for making predictions using the Neural Network model
+paths:
+  /nn_model:
+    post:
+      tags:
+        - Train Models
+      summary: Train a Neural Network model
+      description: Train a Neural Network model using either text data or a CSV file.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                texts:
+                  type: array
+                  items:
+                    type: string
+                  description: List of texts for training the model
+                labels:
+                  type: array
+                  items:
+                    type: integer
+                  description: List of labels corresponding to the texts
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: CSV file containing texts and labels for training the model
+      responses:
+        '200':
+          description: NN Model trained successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "NN Model trained successfully"

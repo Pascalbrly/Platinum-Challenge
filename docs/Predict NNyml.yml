@@ -1,0 +1,28 @@
+/predict_nn:
+    post:
+      tags:
+        - Predict NN
+      summary: Make prediction using the Neural Network model
+      description: Make prediction using the Neural Network model with input text.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The input text for prediction
+      responses:
+        '200':
+          description: Prediction made successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  y_pred_nn:
+                    type: number
+                    description: The predicted label by the Neural Network model
+                    example: 1
