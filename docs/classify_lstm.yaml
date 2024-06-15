@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  description: "Classify text using the LSTM model"
+  version: "1.0.0"
+  title: "Classify Text with LSTM"
+paths:
+  /classify_lstm:
+    post:
+      tags:
+        - "text"
+      summary: "Classify text"
+      description: "Classify text using the LSTM model"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "text"
+          in: "formData"
+          description: "The text to classify"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              status_code:
+                type: "integer"
+              description:
+                type: "string"
+              data:
+                type: "object"
+                properties:
+                  text:
+                    type: "string"
+                  sentiment:
+                    type: "string"

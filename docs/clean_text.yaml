@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  description: "API for cleaning text"
+  version: "1.0.0"
+  title: "Clean Text API"
+paths:
+  /clean_text:
+    post:
+      tags:
+        - "text"
+      summary: "Clean the input text"
+      description: "Returns the cleaned version of the input text"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "text"
+          in: "formData"
+          description: "Text to be cleaned"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              status_code:
+                type: "integer"
+              description:
+                type: "string"
+              data:
+                type: "object"
+                properties:
+                  original_text:
+                    type: "string"
+                  cleaned_text:
+                    type: "string"

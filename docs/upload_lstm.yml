@@ -1,51 +1,30 @@
 swagger: '2.0'
 info:
-  description: "Upload LSTM Model"
+  description: "Upload the LSTM model file"
   version: "1.0.0"
-  title: "Upload LSTM Model API"
+  title: "Upload LSTM Model"
 paths:
   /upload_lstm:
     post:
       tags:
-        - "Model"
-      summary: "Upload LSTM Model"
-      description: "Endpoint to upload an LSTM model file"
+        - "model"
+      summary: "Upload LSTM model"
+      description: "Upload the LSTM model file"
       consumes:
         - "multipart/form-data"
       produces:
         - "application/json"
       parameters:
-        - name: "text"
-          in: "formData"
-          description: "Text data associated with the model"
-          required: true
-          type: "string"
         - name: "file"
           in: "formData"
-          description: "LSTM model file to upload"
+          description: "The LSTM model file to upload"
           required: true
           type: "file"
       responses:
         200:
-          description: "Successful operation"
+          description: "successful operation"
           schema:
             type: "object"
             properties:
               message:
-                type: "string"
-              text:
-                type: "string"
-        400:
-          description: "Error uploading model"
-          schema:
-            type: "object"
-            properties:
-              error:
-                type: "string"
-        500:
-          description: "Server error"
-          schema:
-            type: "object"
-            properties:
-              error:
                 type: "string"

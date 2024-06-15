@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  description: "API for tokenizing text"
+  version: "1.0.0"
+  title: "Tokenize Text API"
+paths:
+  /tokenize_text:
+    post:
+      tags:
+        - "text"
+      summary: "Tokenize the input text"
+      description: "Returns the tokenized and padded version of the input text"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "text"
+          in: "formData"
+          description: "Text to be tokenized"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              status_code:
+                type: "integer"
+              description:
+                type: "string"
+              data:
+                type: "object"
+                properties:
+                  original_text:
+                    type: "string"
+                  cleaned_text:
+                    type: "string"
+                  tokenized_text:
+                    type: "array"
+                    items:
+                      type: "integer"
+                  padded_text:
+                    type: "array"
+                    items:
+                      type: "array"
+                      items:
+                        type: "integer"
